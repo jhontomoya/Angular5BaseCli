@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //  alert('Datos invalidos');
     //}
   }
-
+  
   ngOnDestroy() {
 
   }

@@ -35,4 +35,11 @@ export class MainComponent implements OnInit {
       dato !== objGitHuBModel // compara el valor de dato que se obtenie en el click y regresa el valor si es diferente
     );  
   }
+
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+
 }
