@@ -13,7 +13,8 @@ import { MatToolbarModule,
         MatIconModule,
         MatInputModule,
         MatProgressBarModule,
-        MatSelectModule } from '@angular/material';
+        MatSelectModule,
+        MatCardModule } from '@angular/material';
 
 import { APP_PROVIDERS } from './app.providers';
 import { MainComponent } from './main/main.component';
@@ -33,7 +34,8 @@ export const MATERIAL_COMPONENTS = [
   MatIconModule,
   MatInputModule,
   MatProgressBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCardModule
 ]
 
 @NgModule({

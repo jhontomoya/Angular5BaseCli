@@ -1,15 +1,18 @@
 <div class="login-container">
-    <div class="login-input">
-        <mat-form-field class="example-full-width" >
-          <input matInput placeholder="Usuario" value="" [(ngModel)] = "user" >
-        </mat-form-field>
-    </div>
-    <div class="login-input">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Contraseña" value="" [(ngModel)] = "password">
-        </mat-form-field>
-    </div>
-    <div>
-        <button mat-button (click) = "logIn()">Login</button>
-    </div>
+    <mat-toolbar class="card-input">Iniciar Sesion</mat-toolbar>
+    <mat-card>
+            <div class="login-input">
+                    <mat-form-field >
+                    <input matInput placeholder="Usuario" value="" [(ngModel)] = "user" >
+                    </mat-form-field>
+                </div>
+                <div class="login-input">
+                    <mat-form-field >
+                    <input matInput placeholder="Contraseña" value="" [(ngModel)] = "password">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-button (click) = "logIn()" mat-raised-button >Login</button>
+                </div>
+    </mat-card>      
 </div>
