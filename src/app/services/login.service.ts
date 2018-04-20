@@ -13,6 +13,6 @@ export class LoginService {
             //console.log(this.status);
             //return this.status;
         //}
-        return (userR === this.user && passwordR === this.password ? this.status : 'Server error' ) //ejemplo en git-hub.service.ts
+        return (userR === this.user && passwordR === this.password ? this.status : 'Datos Invalidos' ) //ejemplo en git-hub.service.ts
     }
 }

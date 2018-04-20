@@ -1,19 +1,24 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
+const message: string = 'Datos Invalidos';
+const action: string = 'Error';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit, OnDestroy {
 
     user: string;
     password: string;
     status: string;
 
-  constructor(private _loginService: LoginService, private _router: Router) {
+  constructor(private _loginService: LoginService, private _router: Router, private _snackBar: MatSnackBar) {
 
   }
 
@@ -23,7 +28,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logIn(){
     status = this._loginService.getDatos(this.user, this.password);
-    (status === 'Ok'  ? this._router.navigate(['']) : alert('Datos invalidos') );
+    (status === 'Ok'  ? this._router.navigate(['']) : this._snackBar.open( message, action, {
+                                                                                duration: 2000,
+                                                                              }));
     //console.log('Click');
     //console.log(`Componente: ${this._loginService.getDatos(this.user, this.password)}`);
     //if(status === 'Ok'){
@@ -33,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //  alert('Datos invalidos');
     //}
   }
-  
+
   ngOnDestroy() {
 
   }
