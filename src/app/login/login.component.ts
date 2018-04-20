@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     password: string;
     status: string;
 
-  constructor(private _loginService: LoginService) {
+  constructor(private _loginService: LoginService, private _router: Router) {
 
   }
 
@@ -23,7 +23,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logIn(){
     //console.log('Click');
-    console.log(`Componente: ${this._loginService.getDatos(this.user, this.password)}`);
+    status = this._loginService.getDatos(this.user, this.password);
+    //console.log(`Componente: ${this._loginService.getDatos(this.user, this.password)}`);
+    if(status === 'Ok'){
+      this._router.navigate(['']);
+    }
+    else{
+      alert('Datos invalidos');
+    }
   }
 
   ngOnDestroy() {
