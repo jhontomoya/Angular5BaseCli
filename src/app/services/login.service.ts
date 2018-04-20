@@ -9,9 +9,10 @@ export class LoginService {
     getDatos(userR: string, passwordR: string){
         //console.log(userR);
         //console.log(passwordR);
-        if (userR === this.user && passwordR === this.password){
+        //if (userR === this.user && passwordR === this.password){
             //console.log(this.status);
-            return this.status;
-        }
+            //return this.status;
+        //}
+        return (userR === this.user && passwordR === this.password ? this.status : 'Server error' ) //ejemplo en git-hub.service.ts
     }
 }
