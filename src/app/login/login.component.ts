@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     password: string;
     status: string;
 
-  constructor(private _loginService: LoginService, private _router: Router, private _snackBar: MatSnackBar) {
+  constructor(private _loginService: LoginService, public _router: Router, private _snackBar: MatSnackBar) {
 
   }
 
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //  alert('Datos invalidos');
     //}
   }
+
 
   ngOnDestroy() {
 
