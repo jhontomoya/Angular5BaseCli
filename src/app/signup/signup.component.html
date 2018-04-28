@@ -1,0 +1,38 @@
+<div class="signup-container">
+    <mat-toolbar class="card-input">New User</mat-toolbar>
+    <mat-card>
+            <div class="signup-input">
+                <mat-form-field >
+                <input id="usr" matInput placeholder="Usuario" value="" [(ngModel)] = "user" >
+                </mat-form-field>
+            </div>
+            
+            <div class="signup-input">
+                <mat-form-field >
+                <input id="pdw" matInput placeholder="Contraseña" value="" [(ngModel)] = "password">
+                </mat-form-field>
+            </div>
+
+            <div class="signup-input">
+                <mat-form-field >
+                <input id="cpdw" matInput placeholder="ConfirmarContraseña" value="" [(ngModel)] = "confirmpassword">
+                </mat-form-field>
+            </div>
+
+            <div class="signup-input">
+                <mat-form-field >
+                <input id="email" matInput placeholder="Email" value="" [(ngModel)] = "email" >
+                </mat-form-field>
+            </div>
+
+            <div class="signup-input">
+                <mat-form-field >
+                <input id="name" matInput placeholder="Nombre" value="" [(ngModel)] = "name" >
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-button (click) = "SignUp()" mat-raised-button >Sign Up</button>
+            </div>
+    </mat-card>      
+</div>

@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from "@angular/common";
 
 import { MATERIAL_COMPONENTS } from "../app.module";// aqui importamos la lista de material
 import { APP_PROVIDERS } from "../app.providers"; // aqui imoirtamos los sercivios ya que el error sale de un servicio
-import { LoginComponent } from './login.component';
+import { SignUpComponent } from './signup.component';
 import { AppComponent, routes } from '../app.component';
 import { MainComponent } from '../main/main.component';
 import { AboutComponent } from '../about/about.component';
@@ -16,17 +16,17 @@ import { SearchUserComponent } from '../search-user/search-user.component';
 import {  GitHubCardComponent} from "../git-hub-card/git-hub-card.component";
 import { PasivoComponent } from '../pasivo/pasivo.component';
 import { ReactivoComponent } from '../reactivo/reactivo.component';
-import { SignUpComponent } from "../signup/signup.component";
+import { LoginComponent } from '../login/login.component';
 
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('SigUpComponent', () => {
+  let component: SignUpComponent;
+  let fixture: ComponentFixture<SignUpComponent>;
 
   beforeEach(async(() => { // siempre se incializa estos valores
     TestBed.configureTestingModule({// el TestBed configura el modulo de testing
       declarations: [ 
-          LoginComponent,
+          SignUpComponent,
           MainComponent,
           AboutComponent,
           ContactComponent,
@@ -34,7 +34,7 @@ describe('LoginComponent', () => {
           GitHubCardComponent,
           PasivoComponent,
           ReactivoComponent,
-          SignUpComponent
+          LoginComponent
         ],
       imports: [
         MATERIAL_COMPONENTS, 
@@ -52,7 +52,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SignUpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -61,28 +61,38 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should data correct', () => {
-    let navigateSpy = spyOn(component._router, 'navigate');
+  it('should data username correct', () => {
     const compiled = fixture.nativeElement;
     fixture.detectChanges();
-    component.user = 'Admon';
-    component.password = 'admon';
-    component.logIn();
-    expect(navigateSpy).toHaveBeenCalledWith(['']);
+    component.user = 'Admon505';
+    //component.SignUp();
+    expect(component.ValidateUserName(component.user)).toThrow;
+
+  });
+  it('should data username incorrect', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    //component.user = 'UsUsUsUsUsUsUsUs16';
+    component.user = 'Adm';
+    expect(component.ValidateUserNameIncorrect(component.user)).toEqual(false);
   });
 
-  it('should data incorrect', () => {
-    let snackbarSpy = spyOn(component._snackBar, 'open');
+  it('should data password Correct', () => {
     const compiled = fixture.nativeElement;
     fixture.detectChanges();
-    component.user = 'admon';
-    component.password = 'admon';
-    component._snackBar.open(component.message, component.action,{
-                              duration: component.time,
-                            });
-    component.logIn();
-    expect(snackbarSpy).toHaveBeenCalled();
+    component.password = 'Admin505';
+    expect(component.ValidatePassword(component.password)).toThrow;
   });
+
+  it('should data password Incorrect', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    //component.password = 'admin505';
+    //component.password = 'ADMIN505';
+    component.password = 'Administrador';
+    expect(component.ValidatePassword(component.password)).toEqual(false);
+  });
+
 
   it ('should button click', () => {
     //let navigateSpy = spyOn(component._router, 'navigate');
@@ -92,6 +102,5 @@ describe('LoginComponent', () => {
     component.password = 'admon';
     compiled.querySelector('button').click();
   } );
-
 
 });

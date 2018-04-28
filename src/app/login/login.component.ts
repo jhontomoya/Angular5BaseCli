@@ -3,8 +3,8 @@ import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-const message: string = 'Datos Invalidos';
-const action: string = 'Error';
+//const message: string = 'Datos Invalidos';
+//const action: string = 'Error';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     user: string;
     password: string;
     status: string;
+    message: string = 'Datos Invalidos';
+    action: string = 'Error';
+    time: number = 2000;
 
-  constructor(private _loginService: LoginService, public _router: Router, private _snackBar: MatSnackBar) {
+  constructor(private _loginService: LoginService, public _router: Router, public _snackBar: MatSnackBar) {
 
   }
 
@@ -28,8 +31,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logIn(){
     status = this._loginService.getDatos(this.user, this.password);
-    (status === 'Ok'  ? this._router.navigate(['']) : this._snackBar.open( message, action, {
-                                                                                duration: 2000,
+    (status === 'Ok'  ? this._router.navigate(['']) : this._snackBar.open( this.message, this.action, {
+                                                                                duration: this.time,
                                                                               }));
     //console.log('Click');
     //console.log(`Componente: ${this._loginService.getDatos(this.user, this.password)}`);

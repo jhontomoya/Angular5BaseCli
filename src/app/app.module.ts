@@ -26,6 +26,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
 import { PasivoComponent } from './pasivo/pasivo.component';
 import { ReactivoComponent } from './reactivo/reactivo.component';
 import { LoginComponent } from "./login/login.component";
+import { SignUpComponent } from "./signup/signup.component";
 
 export const MATERIAL_COMPONENTS = [
   MatToolbarModule,
@@ -50,7 +51,8 @@ export const MATERIAL_COMPONENTS = [
     SearchUserComponent,
     PasivoComponent,
     ReactivoComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
