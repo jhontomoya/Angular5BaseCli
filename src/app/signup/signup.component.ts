@@ -45,6 +45,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   return valor;
  }
 
+ //80
+ //Regex Js
  ValidatePassword(password): boolean{
      let valor: boolean = false;
      let min='abcdefghyjklmnñopqrstuvwxyz';
