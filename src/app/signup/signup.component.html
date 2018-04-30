@@ -3,36 +3,43 @@
     <mat-card>
             <div class="signup-input">
                 <mat-form-field >
-                <input id="usr" matInput placeholder="Usuario" value="" [(ngModel)] = "user" >
+                <input id="usr" type="text" matInput placeholder="Usuario" value="" [(ngModel)] = "user" >
                 </mat-form-field>
             </div>
             
             <div class="signup-input">
                 <mat-form-field >
-                <input id="pdw" matInput placeholder="Contraseña" value="" [(ngModel)] = "password">
+                <input id="pdw" type="password" matInput placeholder="Contraseña" value="" [(ngModel)] = "password">
                 </mat-form-field>
             </div>
 
             <div class="signup-input">
                 <mat-form-field >
-                <input id="cpdw" matInput placeholder="ConfirmarContraseña" value="" [(ngModel)] = "confirmpassword">
+                <input id="cpdw" type="password" matInput placeholder="ConfirmarContraseña" value="" [(ngModel)] = "confirmpassword">
                 </mat-form-field>
             </div>
 
             <div class="signup-input">
                 <mat-form-field >
-                <input id="email" matInput placeholder="Email" value="" [(ngModel)] = "email" >
+                <input id="email" type="email" matInput placeholder="Email" value="" [(ngModel)] = "email" >
                 </mat-form-field>
             </div>
 
             <div class="signup-input">
                 <mat-form-field >
-                <input id="name" matInput placeholder="Nombre" value="" [(ngModel)] = "name" >
+                <input id="name" type="text" matInput placeholder="Nombre" value="" [(ngModel)] = "name" >
                 </mat-form-field>
+            </div>
+
+            <div class="signup-input">
+                <mat-checkbox [(ngModel)]="checked">Terminos y Condiciones</mat-checkbox>
             </div>
 
             <div>
                 <button mat-button (click) = "SignUp()" mat-raised-button >Sign Up</button>
             </div>
-    </mat-card>      
+    </mat-card>
+    <div>
+        <span> Estado: {{status}}</span>
+    </div>      
 </div>

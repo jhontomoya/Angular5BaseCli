@@ -74,17 +74,17 @@ describe('SigUpComponent', () => {
     fixture.detectChanges();
     //component.user = 'UsUsUsUsUsUsUsUs16';
     component.user = 'Adm';
-    expect(component.ValidateUserNameIncorrect(component.user)).toEqual(false);
+    expect(component.ValidateUserName(component.user)).toEqual(false);
   });
 
-  it('should data password Correct', () => {
+  it('should data password correct', () => {
     const compiled = fixture.nativeElement;
     fixture.detectChanges();
     component.password = 'Admin505';
     expect(component.ValidatePassword(component.password)).toThrow;
   });
 
-  it('should data password Incorrect', () => {
+  it('should data password incorrect', () => {
     const compiled = fixture.nativeElement;
     fixture.detectChanges();
     //component.password = 'admin505';
@@ -93,6 +93,96 @@ describe('SigUpComponent', () => {
     expect(component.ValidatePassword(component.password)).toEqual(false);
   });
 
+  it('should data confirm password correct', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.password = 'Admin505';
+    component.confirmpassword = 'Admin505';
+    expect(component.ValidateEqualPassword(component.password,component.confirmpassword)).toThrow;
+  });
+
+  it('should data confirm password incorrect', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.password = 'Admin505';
+    component.confirmpassword = 'Admin1505';
+    expect(component.ValidateEqualPassword(component.password,component.confirmpassword)).toEqual(false);
+  });
+
+  it('should data email correct', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    //component.email = 'prueba@prueba.com';
+    component.email = 'prueba_ps@prueba.com.mx';
+    expect(component.ValidateEmail(component.email)).toThrow;
+  });
+
+  it('should data email incorrect', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    //component.email = 'prueba.com';
+    //component.email = 'prueba@.com';
+    component.email = '@.com';
+    expect(component.ValidateEmail(component.email)).toEqual(false);
+  });
+
+  it('should data name correct', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.name = 'Jhonn';
+    expect(component.ValidateName(component.name)).toThrow;
+  });
+
+  it('should data name incorrect', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.name = 'Jhonn505';
+    expect(component.ValidateName(component.name)).toEqual(false);
+  });
+
+  it('should data checkbox true', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.checked = true;
+    expect(component.ValidateCheckbox(component.checked)).toThrow;
+  });
+
+  it('should data checkbox false', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.checked = false;
+    expect(component.ValidateCheckbox(component.checked)).toEqual(false);
+  });
+  
+  it('should data complete', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.user = 'Admon505';
+    component.password = 'Admin505';
+    component.confirmpassword = 'Admin505';
+    component.email = 'prueba@prueba.com';
+    component.name = 'Admon';
+    component.checked = true;
+    expect(component.ValidateCompleteData(component.user,component.password,component.confirmpassword,component.email,component.name,component.checked)).toThrow;
+  });
+
+  it('should data incomplete', () => {
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+    component.user = 'Admon505';
+    //component.user = null;
+    component.password = 'Admin505';
+    //component.password = null;
+    //component.confirmpassword = 'Admin505';
+    component.confirmpassword = null;
+    component.email = 'prueba@prueba.com';
+    //component.email = null;
+    component.name = 'Admon';
+    //component.name = null;
+    component.checked = true;
+    //component.checked = false;
+    expect(component.ValidateCompleteData(component.user,component.password,component.confirmpassword,component.email,component.name,component.checked)).toEqual(false);
+  });
 
   it ('should button click', () => {
     //let navigateSpy = spyOn(component._router, 'navigate');
@@ -101,6 +191,6 @@ describe('SigUpComponent', () => {
     component.user = 'Admon';
     component.password = 'admon';
     compiled.querySelector('button').click();
-  } );
+  });
 
 });
