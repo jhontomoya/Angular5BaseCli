@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     email: string;
     name: string;
     checked: boolean;
+    validate: boolean;
     
 
   constructor(private _loginService: LoginService, public _router: Router, public _snackBar: MatSnackBar) {
@@ -33,14 +34,25 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   SignUp(){
-      this.ValidateCompleteData(this.user,this.password,this.confirmpassword,this.email,this.name,this.checked);
-      this.ValidateUserName(this.user);
-      this.ValidatePassword(this.password);
-      this.ValidateEqualPassword(this.password, this.confirmpassword);
-      this.ValidateEmail (this.email);
-      this.ValidateName(this.name);
-      this.ValidateCheckbox(this.checked);
-      this.status = 'OK';
+      this.status='';
+      //(this.ValidatePassword(this.password)==true && this.ValidateEqualPassword(this.password,this.confirmpassword) ? this.status = 'true' : this.status = 'false');
+      ((this.ValidateCompleteData(this.user,this.password,this.confirmpassword,this.email,this.name,this.checked)== true)  ?  this.validate = true : this.validate = false);
+      //alert('All Data'+this.ValidateCompleteData(this.user,this.password,this.confirmpassword,this.email,this.name,this.checked));
+      ((this.validate==true)&&(this.ValidateUserName(this.user)==true)  ?  this.validate = true : this.validate = false);
+      //alert('Validate '+this.validate+'User '+this.ValidateUserName(this.user));
+      ((this.validate==true)&&(this.ValidatePassword(this.password)==true)  ?  this.validate = true : this.validate = false);
+      //alert('Validate'+this.validate+'Password'+this.ValidatePassword(this.password));
+      ((this.validate==true)&&(this.ValidateEqualPassword(this.password, this.confirmpassword)==true)  ?  this.validate = true : this.validate = false);
+      //alert(this.ValidateEqualPassword(this.password, this.confirmpassword));
+      ((this.validate==true)&&( this.ValidateEmail (this.email)==true)  ?  this.validate = true : this.validate = false);
+      //alert( this.ValidateEmail (this.email));
+      ((this.validate==true)&&(this.ValidateName(this.name)==true)  ?  this.validate = true : this.validate = false);
+      //alert(this.ValidateName(this.name));
+      ((this.validate==true)&&(this.ValidateCheckbox(this.checked)==true)  ?  this.validate = true : this.validate = false);
+      //alert(this.ValidateCheckbox(this.checked));
+      (this.validate==true  ?  this.status = 'OK' : this.status = 'Datos Incorrectos');
+    //alert(this.ValidateCheckbox(this.checked));
+     // this.status = 'OK';
     //alert(this.status);
     //this.ValidateUserName(this.user)
   }
@@ -50,7 +62,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       return valor;
   }
 
- //80
+ //90
  //Regex Js
  ValidatePassword(password): boolean{
      let valor: boolean = false;
