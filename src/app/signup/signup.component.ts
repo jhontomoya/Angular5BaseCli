@@ -33,7 +33,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   SignUp(){
-    this.status = 'OK';
+      this.ValidateCompleteData(this.user,this.password,this.confirmpassword,this.email,this.name,this.checked);
+      this.ValidateUserName(this.user);
+      this.ValidatePassword(this.password);
+      this.ValidateEqualPassword(this.password, this.confirmpassword);
+      this.ValidateEmail (this.email);
+      this.ValidateName(this.name);
+      this.ValidateCheckbox(this.checked);
+      this.status = 'OK';
     //alert(this.status);
     //this.ValidateUserName(this.user)
   }
