@@ -55,6 +55,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
      // this.status = 'OK';
     //alert(this.status);
     //this.ValidateUserName(this.user)
+    
   }
   ValidateUserName(user): boolean{
       let valor: boolean ;
@@ -64,38 +65,45 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
  //90
  //Regex Js
- ValidatePassword(password): boolean{
-     let valor: boolean = false;
-     let min='abcdefghyjklmnñopqrstuvwxyz';
-     let may='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
-     let num='1234567890';
-     let i: number=0;
-     let res: number=0;
-     for(i = 0; i<this.password.length;i++){
-        if(may.indexOf(this.password.charAt(i),0)!=-1){
-            res=1;
-        }
-     }
-     if(res == 1){
-        for(i = 0; i<this.password.length;i++){
-            if(min.indexOf(this.password.charAt(i),0)!=-1){
-                res=res+1;
-            }
-         } 
-     }
-     else if(res == 2){
-        for(i = 0; i<this.password.length;i++){
-            if(num.indexOf(this.password.charAt(i),0)!=-1){
-                valor= true;
-            }
-         } 
-     }
-     else {
-         valor = false;
-     }
+//  ValidatePassword(password): boolean{
+//      // letexpresion = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/
+//      let valor: boolean = false;
+//      let min='abcdefghyjklmnñopqrstuvwxyz';
+//      let may='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+//      let num='1234567890';
+//      let i: number=0;
+//      let res: number=0;
+//      for(i = 0; i<this.password.length;i++){
+//         if(may.indexOf(this.password.charAt(i),0)!=-1){
+//             res=1;
+//         }
+//      }
+//      if(res == 1){
+//         for(i = 0; i<this.password.length;i++){
+//             if(min.indexOf(this.password.charAt(i),0)!=-1){
+//                 res=res+1;
+//             }
+//          } 
+//      }
+//      else if(res == 2){
+//         for(i = 0; i<this.password.length;i++){
+//             if(num.indexOf(this.password.charAt(i),0)!=-1){
+//                 valor= true;
+//             }
+//          } 
+//      }
+//      else {
+//          valor = false;
+//      }
 
-     return valor;
- }
+//      return valor;
+//  }
+
+ValidatePassword(password): boolean{
+    //expresion = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/
+    let comparacion = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
+    return comparacion.test(this.password);
+}
 
  ValidateEqualPassword(password, confirmpassword): boolean{
     let valor: boolean ;
